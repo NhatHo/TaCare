@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" ng-app="hospitalsApp">
+<head>
+    <meta charset="utf-8">
+    <title>Bệnh Viện</title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="../css/style.responsive.css" media="all">
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="../css/hospitals.css" />
+
+	<!-- Angular CDN -->
+	<script src="../js/angular.min.js"></script>
+
+	<!-- Firebase CDN -->
+	<script src="../js/firebase.js"></script>
+
+	<!-- AngularFire CDN -->
+	<script src="../js/angularfire.min.js"></script>
+	
+    <script src="../js/jquery.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/script.responsive.js"></script>
+	
+	<script src="../js/hospitals.js"></script>	
+<meta name="description" content="Description">
+<meta name="keywords" content="Keywords">
+
+<style>.art-content .art-postcontent-0 .layout-item-0 { border-spacing: 15px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-1 { padding: 0px;  }
+.art-content .art-postcontent-0 .layout-item-2 { border-spacing: 10px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-3 { padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 15px;  }
+.art-content .art-postcontent-0 .layout-item-4 { padding: 10px;  }
+.ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+.ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+
+</style>
+</head>
+<body ng-controller="hospitalController">
+<div id="art-main">
+<header class="art-header clearfix">
+
+
+    <div class="art-shapes">
+		<div class="art-object0" data-left="0%"></div>
+	</div>
+	<div class="page-header col-sm-8" style="left: 40%; top: -47px;">
+		<h1><b>TaCare</b>  <small>Feel Better - Live Longer</small> </h1>
+    </div>
+
+<nav class="art-nav clearfix">
+    <div class="art-nav-inner">
+    <ul class="art-hmenu">
+		<li>
+			<a href="../TaCare.html">Tra Cứu Bệnh</a>
+		</li>
+		<li>
+			<a href="hospitals.html" class="active">Bệnh Viện</a>
+		</li>
+		<li>
+			<a href="news.html">Tin Tức</a>
+		</li>
+		<li>
+			<a href="healthconsultant.html">Tư Vấn</a>
+		</li>
+		<li>
+			<a href="contacts.html" style="width:107px;">Liên Lạc</a>
+		</li>
+	</ul> 
+    </div>
+    </nav>
+
+                    
+</header>
+<div class="art-sheet clearfix">
+    <div class="art-layout-wrapper clearfix">
+        <div class="art-content-layout">
+            <nav class="navbar navbar-default" role="navigation">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Tìm Kiếm</a>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" style="width: 400px; margin-top: 9px;" placeholder="Tên, địa chỉ số điện thoại của bệnh viện">
+						</div>
+						<button type="submit" class="btn btn-primary" style="margin-top: 9px;">Tìm</button>
+					</form>
+					</div><!-- /.container-fluid -->
+					</nav>
+					<div ng-repeat="hospital in hospitals">
+						<br/>
+						<div class="art-layout-cell layout-item-4 col-xs-12" style="border-style: groove; border-radius: 5px;" >
+						<p><img width="200" height="150" alt="" src="../images/benhvien/{{hospital.Ten}}.jpg" style="margin-right: 10px; float: left;" /></p>
+						<span>
+							<h4><strong>{{hospital.Ten}}</strong></h4>
+							<p>{{hospital.DiaChi}}</p>
+							<p><i>{{hospital.DienThoai}}</i></p>
+							<div fundoo-rating rating-value="rating" max="5" on-rating-selected="saveRatingToServer(rating)"></div>
+							<div class="btn-group">
+								<a type="button" class="btn btn-success" data-ng-click="addComment($event)" id="{{hospital.id}}">Thêm Đánh Giá</a>
+								<a type="button" class="btn btn-success" data-ng-click="showComment($event)" id="{{hospital.id}}">Xem Đánh Giá</a>
+							</div>
+						</span>
+						</div><br/><br/>
+						<div id="addReview_{{hospital.id}}" style="display:none">
+							<div id="popupForm">
+								<p><img width="100" height="100" alt="" src="../images/reviewIcon.png" style="margin-right: -80px; float: left;" /></p>
+								<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label for="titleThread" class="col-sm-2 control-label">Tiêu Đề</label>
+										<div class="col-sm-8">
+											<input type="text" ng-model="titleThread" class="form-control" id="titleThread" placeholder=" Tiêu Đề của bài đánh giá">
+										</div>
+									</div>
+									<div class="form-group" style="margin-top: -74px;">
+										<label for="contentThread" class="col-sm-2 control-label">Nội Dung</label>
+										<div class="col-sm-8">
+											<textarea ng-model="contentThread" style="height: 100px;" class="form-control" id="contentThread" placeholder="Nội dung của bài đánh giá"></textarea>
+										</div>
+									</div>
+									<div class="form-group" style="margin-left: 25px;margin-top: -9px;">
+										<div class="col-sm-offset-2 col-sm-10">
+											<button type="submit" class="submit btn btn-success" data-ng-click="sendAddReview($event)" id="{{hospital.id}}">Gửi</button>
+											<button type="button" class="btn btn-default" data-ng-click="cancelAddReview($event)" id="{{hospital.id}}">Huỷ Bỏ</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+                </div>
+            </div>
+</div>
+<footer class="art-footer clearfix">
+  <div class="art-footer-inner">
+<div style="position:relative;display:inline-block;padding-left:35px;padding-right:35px"><a title="RSS" style="position:absolute;bottom:-10px;left:-6px" href="#"></a><p><a href="#">Terms</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">Policy</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">About</a></p>
+
+<p>Copyright © 2014. All Rights Reserved.</p><br></div>
+    <p>TaCare production</p>
+  </div>
+</footer>
+
+</div>
+
+
+</body></html>

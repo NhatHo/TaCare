@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" ng-app="diseasesSearchEngine">
+	<head>
+    <meta charset="utf-8">
+    <title>Tra Cứu Bệnh</title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="css/style.responsive.css" media="all">
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css"/>
+	
+	<!-- Angular CDN -->
+	<script src="js/angular.min.js"></script>
+
+	<!-- Firebase CDN -->
+	<script src="js/firebase.js"></script>
+
+	<!-- AngularFire CDN -->
+	<script src="js/angularfire.min.js"></script>
+	
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/script.responsive.js"></script>
+	<script src="js/searchDiseases.js"></script>
+<meta name="description" content="Description">
+<meta name="keywords" content="Keywords">
+<style>.art-content .art-postcontent-0 .layout-item-0 { border-spacing: 15px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-1 { padding: 0px;  }
+.art-content .art-postcontent-0 .layout-item-2 { border-spacing: 10px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-3 { padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 15px;  }
+.art-content .art-postcontent-0 .layout-item-4 { padding: 10px;  }
+.ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+.ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+
+</style>
+</head>
+<body ng-controller="diseasesController">
+<div id="art-main">
+<header class="art-header clearfix">
+
+
+    <div class="art-shapes">
+		<div class="art-object0" data-left="0%"></div>
+    </div>
+	<div class="page-header col-sm-8" style="left: 40%; top: -47px;">
+		<h1><b>TaCare</b>  <small>Feel Better - Live Longer</small> </h1>
+    </div>
+
+<nav class="art-nav clearfix">
+    <div class="art-nav-inner">
+    <ul class="art-hmenu">
+		<li>
+			<a href="TaCare.html" class="active">Tra Cứu Bệnh</a>
+		</li>
+		<li>
+			<a href="html/hospitals.html">Bệnh Viện</a>
+		</li>
+		<li>
+			<a href="html/news.html">Tin Tức</a>
+		</li>
+		<li>
+			<a href="html/healthconsultant.html">Tư Vấn</a>
+		</li>
+		<li>
+			<a href="html/contacts.html" style="width:107px;">Liên Lạc</a>
+		</li>
+	</ul> 
+    </div>
+    </nav>
+
+                    
+</header>
+<div class="art-sheet clearfix">
+            <div class="art-layout-wrapper clearfix">
+                <div class="art-content-layout">
+					<nav class="navbar navbar-default" role="navigation">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="#">Tìm Kiếm</a>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" style="width: 400px; margin-top: 9px;" placeholder="Tên, triệu chứng của bệnh">
+						</div>
+						<button type="submit" class="btn btn-primary" style="margin-top: 9px;">Tìm</button>
+					</form>
+
+					</div><!-- /.container-fluid -->
+					</nav>
+					<div ng-repeat="disease in diseases">
+						<a type="button" class="btn btn-success col-md-12 diseaseButton" data-ng-click="showContent($event)" id="{{disease.id}}">{{disease.Ten}}</a><br/>
+						<br/>
+						<div style="display: none;" id="disease_{{disease.id}}">
+							<div class="titleBackground">
+								<h4 class="textTitle">Tổng Quan</h4>
+							</div><br/>
+							<p>{{disease.TongQuan}}</p>
+							<div class="titleBackground">
+								<h4 class="textTitle">Triệu Chứng</h4>
+							</div><br/>
+							<p>{{disease.Trieuchung}}</p>
+							<div class="titleBackground">
+								<h4 class="textTitle">Nguyên Nhân</h4>
+							</div><br/>
+							<p>{{disease.NguyenNhan}}</p>
+							<div class="titleBackground">
+								<h4 class="textTitle">Xét Nghiệm</h4>
+							</div><br/>
+							<p>{{disease.XetNghiem}}</p>
+							<div class="titleBackground">
+								<h4 class="textTitle">Thuốc</h4>
+							</div><br/>
+							<p>{{disease.Thuoc}}</p>
+							<div class="titleBackground">
+								<h4 class="textTitle">Phòng Chống</h4>
+							</div><br/>
+							<p>{{disease.PhongChong}}</p>
+							<div class="titleBackground">
+								<h4 class="textTitle">Biện Chứng</h4>
+							</div><br/>
+							<p>{{disease.BienChung}}</p><br/>
+						</div>
+					</div>
+                </div>
+            </div>
+    </div>
+<footer class="art-footer clearfix">
+  <div class="art-footer-inner">
+<div style="position:relative;display:inline-block;padding-left:35px;padding-right:35px"><a title="RSS" style="position:absolute;bottom:-10px;left:-6px" href="#"></a><p><a href="#">Terms</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">Policy</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">About</a></p>
+
+<p>Copyright © 2014. All Rights Reserved.</p><br></div>
+    <p>TaCare production</p>
+  </div>
+</footer>
+
+</div>
+
+
+</body></html>

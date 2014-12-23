@@ -1,0 +1,16 @@
+.textTitle
+{
+	padding-top: 4px;
+	color: white;
+	padding-left: 4px;
+}
+
+.titleBackground {
+	background-color: red; height: 30px;
+}
+
+.diseaseButton {
+	text-align: left;
+	border-style: groove; 
+	border-radius: 5px;
+}

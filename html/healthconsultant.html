@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head><!-- Created by Artisteer v4.0.0.58475 -->
+    <meta charset="utf-8">
+    <title>Tư Vấn</title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="../css/style.responsive.css" media="all">
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/script.responsive.js"></script>
+	
+	<script src="../js/healthconsultant.js"></script>
+	
+<meta name="description" content="Description">
+<meta name="keywords" content="Keywords">
+<style>.art-content .art-postcontent-0 .layout-item-0 { border-spacing: 15px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-1 { padding: 0px;  }
+.art-content .art-postcontent-0 .layout-item-2 { border-spacing: 10px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-3 { padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 15px;  }
+.art-content .art-postcontent-0 .layout-item-4 { padding: 10px;  }
+.ie7 .post .layout-cell {border:none !important; padding:0 !important; }
+.ie6 .post .layout-cell {border:none !important; padding:0 !important; }
+
+</style>
+
+</head>
+<body>
+<div id="art-main">
+<header class="art-header clearfix">
+
+
+    <div class="art-shapes">
+		<div class="art-object0" data-left="0%"></div>
+	</div>
+	<div class="page-header col-sm-8" style="left: 40%; top: -47px;">
+		<h1><b>TaCare</b>  <small>Feel Better - Live Longer</small> </h1>
+    </div>
+
+<nav class="art-nav clearfix">
+    <div class="art-nav-inner">
+    <ul class="art-hmenu">
+		<li>
+			<a href="../TaCare.html">Tra Cứu Bệnh</a>
+		</li>
+		<li>
+			<a href="hospitals.html">Bệnh Viện</a>
+		</li>
+		<li>
+			<a href="news.html">Tin Tức</a>
+		</li>
+		<li>
+			<a href="healthconsultant.html" class="active">Tư Vấn</a>
+		</li>
+		<li>
+			<a href="contacts.html" style="width:107px;">Liên Lạc</a>
+		</li>
+	</ul> 
+    </div>
+    </nav>
+
+                    
+</header>
+<div class="art-sheet clearfix">
+    <div class="art-layout-wrapper clearfix">
+        <div class="art-content-layout">
+            <div class="art-content-layout-row">
+                <div class="art-layout-cell art-content clearfix">
+					<div class="consultant"> </div>	<br/>
+						<button type="button" class="btn btn-primary" id="freeConsult" onClick="openFreeConsult();">Tư Vấn Miễn Phí</button>
+							<button type="button" class="btn btn-success" id="specialConsult" onClick="specialConsult();">Tư Vấn Đặc Biệt</button><br/><br/>
+							<div id="freeConsultant" style="display:none">
+								<div id="popupForm">
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<label for="userName" class="col-sm-2 control-label"><img src="../images/user.png"></img></label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="userName" class="form-control" id="userName" placeholder=" Tên Của Bạn">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="phoneNum" class="col-sm-2 control-label"><img src="../images/phone.jpg"></img></label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="phoneNum" class="form-control" id="phoneNum" placeholder=" Số điện thoại của bạn">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="emailAdd" class="col-sm-2 control-label"><img src="../images/email.jpg"></img></label>
+											<div class="col-sm-8">
+												<input type="email" ng-model="emailAdd" class="form-control" id="emailAdd" placeholder=" Email của bạn">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="titleThread" class="col-sm-2 control-label">Tiêu Đề</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="titleThread" class="form-control" id="titleThread" placeholder=" Tiêu Đề của câu hỏi">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="contentThread" class="col-sm-2 control-label">Nội Dung</label>
+											<div class="col-sm-8">
+												<textarea ng-model="contentThread" style="height: 100px;" class="form-control" id="contentThread" placeholder="Nội dung câu hỏi"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button type="submit" class="submit btn btn-success">Gửi</button>
+												<button type="button" class="btn btn-default" onClick="cancelFreeConsult()">Huỷ Bỏ</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div id="paidConsultant" style="display:none">
+								<div id="popupForm1">
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<label for="paidUserName" class="col-sm-2 control-label"><img src="../images/user.png"></img></label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="paidUserName" class="form-control" id="paidUserName" placeholder=" Tên Của Bạn">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="paidPhoneNum" class="col-sm-2 control-label"><img src="../images/phone.jpg"></img></label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="paidPhoneNum" class="form-control" id="paidPhoneNum" placeholder=" Số điện thoại của bạn">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="paidEmailAdd" class="col-sm-2 control-label"><img src="../images/email.jpg"></img></label>
+											<div class="col-sm-8">
+												<input type="email" ng-model="paidEmailAdd" class="form-control" id="paidEmailAdd" placeholder=" Email của bạn">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="specialist" class="col-sm-2 control-label"><img src="../images/doctor.jpg"></img></label>
+											<div class="col-sm-8">
+												<div class="dropdown">
+												<button class="btn btn-default dropdown-toggle" type="button" ng-model="specialist" id="specialist" data-toggle="dropdown">
+													Chuyên Gia
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu col-md-6" role="menu" aria-labelledby="specialist">
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ts. Bs. Nguyễn Thế An (Khoa Tim Mạch)</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Gs. Ts. Bs. Trần Mỹ Tâm (Khoa Tâm Thần)</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ths. Bs. Dương Thành Nhân (Khoa Cấp Cứu)</a></li>
+												</ul>
+											</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="paidTitleThread" class="col-sm-2 control-label">Tiêu Đề</label>
+											<div class="col-sm-8">
+												<input type="text" ng-model="paidTitleThread" class="form-control" id="paidTitleThread" placeholder=" Tiêu Đề của câu hỏi">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="paidContentThread" class="col-sm-2 control-label">Nội Dung</label>
+											<div class="col-sm-8">
+												<textarea ng-model="paidContentThread" style="height: 100px;" class="form-control" id="paidContentThread" placeholder="Nội dung câu hỏi"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button type="submit" class="submit btn btn-success">Gửi</button>
+												<button type="button" class="btn btn-default" onClick="cancelPaidConsult()">Huỷ Bỏ</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<h4 style="color: red;">Hotlines</h5>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+									<th><strong>Dịch Vụ (Service) </strong></th>
+									<th>Số Điện Thoại (Phone Number)</th>
+								</tr>
+								</thead>
+								<tbody class="table-hover">
+								<tr>
+									<th><strong>Cảnh Sát (Police) </strong></th>
+									<th>113</th>
+								</tr>
+								<tr>
+									<th><strong>Cứu Hoả (Fire Department) </strong></th>
+									<th>114</th>
+								</tr>
+								<tr>
+									<th><strong>Cứu Thương (Ambulance) </strong></th>
+									<th>115</th>
+								</tr>
+								<tr>
+									<th><strong>Tư Vấn Sức Khoẻ (Health Consultant) </strong></th>
+									<th>04.3775.7066 - 08.3977.0707</th>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<footer class="art-footer clearfix">
+  <div class="art-footer-inner">
+<div style="position:relative;display:inline-block;padding-left:35px;padding-right:35px"><a title="RSS" style="position:absolute;bottom:-10px;left:-6px" href="#"></a><p><a href="#">Terms</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">Policy</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="#">About</a></p>
+
+<p>Copyright © 2014. All Rights Reserved.</p><br></div>
+    <p>TaCare production</p>
+  </div>
+</footer>
+
+</div>
+
+
+</body></html>
